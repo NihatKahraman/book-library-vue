@@ -82,7 +82,7 @@ export default {
       const borrowEndDate = ref(currentDate);
       const tableRows = ref([]);
 
-      const rowsPerPage = 1;
+      const rowsPerPage = 2;
       const currentPage = ref(1)
 
 	  const totalPages = computed(() => Math.ceil(tableRows.value.length / rowsPerPage));
@@ -145,7 +145,7 @@ export default {
             goToPage(currentPage.value - 1)
         }
 	} else { 
-	    alert('Select a book that you want to delete!')
+	    alert('Select a reservation that you want to delete!')
 	}
 };
 
@@ -175,7 +175,7 @@ const updateReservation = async () => {
 		
 		
 	} else {
-        alert('Select a book that you want to update!')
+        alert('Select a reservation that you want to update!')
     }
 }
     const checkDate = () => {

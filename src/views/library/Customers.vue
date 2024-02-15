@@ -142,7 +142,7 @@ export default {
             goToPage(currentPage.value - 1)
         }
 	} else { 
-	    alert('Select a book that you want to delete!')
+	    alert('Select a customer that you want to delete!')
 	}
 };
 
@@ -173,7 +173,7 @@ const updateCustomers = async () => {
 		
 		
 	} else {
-        alert('Select a book that you want to update!')
+        alert('Select a customer that you want to update!')
     }
 }
 

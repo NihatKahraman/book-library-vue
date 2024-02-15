@@ -50,7 +50,7 @@
                     Record Date <input type="date" name="Record Date" id="recordDate" style="width: 110px;" v-model="recordDate">
                 </label>
             </form>
-    </div>
+        </div>
     <div  class="buttons">
         
         <form class="form2" style="display: flex; align-items: center;">
@@ -70,7 +70,7 @@ import getUseCollection from "@/composables/getUseCollection";
 import {firestoreRef} from '@/firebase/config'
 export default {
     setup() {
-     const { collectionRef, addDoc, deleteDoc, updateDoc, getCollection } = getUseCollection("books");
+     const { collectionRef, addDoc, deleteDoc, updateDoc} = getUseCollection("books");
      const db = firestoreRef;
 
      
@@ -153,7 +153,6 @@ export default {
             if(paginatedTableRows.value.length === 0 && currentPage.value > 1) {
                 goToPage(currentPage.value - 1)
             }
-
         } else { 
             alert('Select a book that you want to delete!')
         }
@@ -214,13 +213,13 @@ export default {
 
     
     const filteredTableRows = computed(() => {
-        const searchBook = name.value.toLowerCase() || pageNumber.value.toString() || recordDate.value;
-        const searchWriter = writer.value.toLowerCase() || selectedGenre.value.toLowerCase();
+        const searchBook = name.value.toLowerCase() || writer.value.toLowerCase() || selectedGenre.value.toLowerCase() 
+        || pageNumber.value.toString() || recordDate.value;
 
         return tableRows.value.filter(row => 
         (row.name && row.name.toLowerCase().includes(searchBook)) ||
-        (row.writer && row.writer.toLowerCase().includes(searchWriter)) ||
-        (row.genre && row.genre.toLowerCase().includes(searchWriter)) ||
+        (row.writer && row.writer.toLowerCase().includes(searchBook)) ||
+        (row.genre && row.genre.toLowerCase().includes(searchBook)) ||
         (row.pageNumber && row.pageNumber.toString().includes(searchBook)) ||
         (row.recordDate && row.recordDate.toLowerCase().includes(searchBook))
         )
@@ -291,10 +290,12 @@ label {
     text-align: left;
 }
 select{
+    height: 100px;
     margin-top: 20px;
     margin-bottom: 20px;
     color: black;
-    
+    width: 100%;
+    box-sizing: border-box;
 }
 option{
     color: black;
